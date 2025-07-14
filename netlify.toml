@@ -1,0 +1,29 @@
+[build]
+  # No build command needed for static HTML site
+  command = ""
+  # Publish the root directory since ecard.html is in the root
+  publish = "."
+
+[build.environment]
+  # Set Node.js version if needed
+  NODE_VERSION = "18"
+
+# Redirect rules for single page application
+[[redirects]]
+  from = "/*"
+  to = "/ecard.html"
+  status = 200
+  force = false
+  conditions = {Role = ["admin"]}
+
+# Default redirect to ecard.html
+[[redirects]]
+  from = "/"
+  to = "/ecard.html"
+  status = 301
+
+# Handle 404 errors
+[[redirects]]
+  from = "/*"
+  to = "/ecard.html"
+  status = 404
