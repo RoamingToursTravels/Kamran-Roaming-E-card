@@ -1,9 +1,0 @@
-[build]
-  # No build command needed for static HTML site
-  command = ""
-  # Publish the root directory
-  publish = "."
-
-[build.environment]
-  # Set Node.js version if needed
-  NODE_VERSION = "18"
