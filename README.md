@@ -19,7 +19,7 @@ e-card updated copy/
 │   ├── RTTLOGO.png           # Company logo
 │   ├── Rlogo.png             # Favicon
 │   └── RoamingBackground.jpg # Light mode background
-├── ecard.html                # Main HTML file
+├── index.html               # Main HTML file
 ├── ecard.css                 # Stylesheet
 ├── ecard.js                  # JavaScript functionality
 ├── config.json               # Configuration data
@@ -109,7 +109,7 @@ Customize colors in `config.json`:
 
 ### 5. HTML Content Updates
 
-For direct HTML updates, modify these sections in `ecard.html`:
+For direct HTML updates, modify these sections in `index.html`:
 
 - **Line 25:** Company logo source
 - **Line 28:** Profile image source
