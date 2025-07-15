@@ -9,7 +9,7 @@
 const ECARD_CONFIG = {
     // Personal Information
     PERSONAL: {
-        name: 'M S Kamran',
+        name: 'M S Kamran Roaming',
         organization: 'Roaming BD',
         title: 'Software Engineer',
         officePhone: '01332-547048',
@@ -29,7 +29,7 @@ const ECARD_CONFIG = {
         facebook: 'https://www.facebook.com/ms.kamran.23/',
         github: 'https://github.com/MS-Kamran',
         portfolio: 'https://ms-kamran.github.io/M-S-Kamran-Portfolio/#/',
-        whatsappNumber: '8801734784848'
+        whatsappNumber: '8801332547048'
     },
     
     // File Paths
@@ -51,53 +51,54 @@ const ECARD_CONFIG = {
 
 // ===== CONTACT MANAGEMENT =====
 /**
- * Generates and downloads vCard contact file
+ * Generates and downloads a vCard contact file, with an improved method for iOS.
  */
 function saveContact() {
     const { PERSONAL } = ECARD_CONFIG;
-    
-    // Extract first name and last name from employee's full name
+
     const nameParts = PERSONAL.name.split(' ');
-    const firstName = nameParts.slice(0, -1).join(' '); // Get all parts except last (M S)
-    const lastName = nameParts[nameParts.length - 1]; // Get last part (Kamran)
-    const structuredName = `${firstName} ${lastName}`;
-    
-    // Create vCard data with proper formatting
+    const lastName = nameParts.pop() || '';
+    const firstName = nameParts.join(' ');
+
     const vCard = `BEGIN:VCARD
 VERSION:3.0
-FN:${structuredName}
-N:Roaming BD;${firstName};;;
+FN:${PERSONAL.name}
+N:${lastName};${firstName};;;
 ORG:${PERSONAL.organization}
 TITLE:${PERSONAL.title}
-TEL;TYPE=WORK:${PERSONAL.officePhone}
-TEL;TYPE=CELL:${PERSONAL.personalPhone}
+TEL;TYPE=WORK,VOICE:${PERSONAL.officePhone}
+TEL;TYPE=CELL,VOICE:${PERSONAL.personalPhone}
 EMAIL:${PERSONAL.email}
 URL:${PERSONAL.website}
 ADR;TYPE=WORK:;;${PERSONAL.address.street};${PERSONAL.address.city};;${PERSONAL.address.country}
 END:VCARD`;
-    
+
+    // Safari and iOS devices have issues with the download attribute on blob URLs.
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
     try {
-        // Create and download vCard file
-        const blob = new Blob([vCard], { type: 'text/vcard' });
+        const blob = new Blob([vCard], { type: 'text/vcard;charset=utf-8' });
         const url = window.URL.createObjectURL(blob);
-        const downloadLink = document.createElement('a');
+
+        if (isSafari) {
+            // For Safari/iOS, redirecting is a more reliable way to trigger the import prompt.
+            window.location.href = url;
+        } else {
+            // For other browsers, the download attribute works well.
+            const downloadLink = document.createElement('a');
+            const fileName = `${PERSONAL.name.toLowerCase().replace(/\s+/g, '-')}-contact.vcf`;
+            
+            downloadLink.href = url;
+            downloadLink.download = fileName;
+            
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            
+            setTimeout(() => window.URL.revokeObjectURL(url), 100);
+        }
         
-        // Generate filename using structured name (firstName + Roaming BD)
-        const fileName = `${structuredName.toLowerCase().replace(/\s+/g, '-')}-contact.vcf`;
-        console.log('Downloading contact as:', fileName); // Debug log
-        
-        downloadLink.href = url;
-        downloadLink.download = fileName;
-        
-        // Trigger download
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-        
-        // Clean up
-        window.URL.revokeObjectURL(url);
-        
-        showNotification('Contact saved successfully!', 'success');
+        showNotification('Contact ready to be saved!', 'success');
     } catch (error) {
         console.error('Error saving contact:', error);
         showNotification('Error saving contact. Please try again.', 'danger');
