@@ -396,9 +396,12 @@ body.dark-mode .btn-dark-toggle:hover {
 /* Large phones (480px to 575px) */
 @media (max-width: 575px) and (min-width: 480px) {
     .ecard-main-card {
-        width: 95%;
-        padding: 1.25rem;
+        width: 92%;
+        max-width: 380px;
+        aspect-ratio: 1.6/1;
+        padding: 1.2rem;
         border-radius: 25px;
+        margin: 0 auto;
     }
     
     .ecard-logo {
@@ -449,9 +452,12 @@ body.dark-mode .btn-dark-toggle:hover {
     }
     
     .ecard-main-card {
-        width: 98%;
+        width: 94%;
+        max-width: 340px;
+        aspect-ratio: 1.5/1;
         padding: 1rem;
         border-radius: 20px;
+        margin: 0 auto;
         min-height: auto;
     }
     
@@ -490,13 +496,14 @@ body.dark-mode .btn-dark-toggle:hover {
     }
     
     .ecard-contact-box {
-        padding: 1rem;
+        padding: 0.9rem;
         border-radius: 15px;
+        margin: 0.8rem 0;
     }
     
     .ecard-contact {
         font-size: 0.85rem;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.6rem;
         line-height: 1.4;
     }
     
@@ -508,6 +515,7 @@ body.dark-mode .btn-dark-toggle:hover {
         padding: 10px 20px;
         font-size: 0.95rem;
         border-radius: 25px;
+        margin: 0.6rem 0;
     }
     
     .ecard-social-btn {
@@ -530,13 +538,16 @@ body.dark-mode .btn-dark-toggle:hover {
 /* Extra small phones (below 360px) */
 @media (max-width: 359px) {
     .ecard-bg-pattern {
-        padding: 5px;
+        padding: 6px;
     }
     
     .ecard-main-card {
-        width: 99%;
-        padding: 0.75rem;
+        width: 96%;
+        max-width: 320px;
+        aspect-ratio: 1.4/1;
+        padding: 0.8rem;
         border-radius: 18px;
+        margin: 0 auto;
     }
     
     .ecard-logo {
@@ -594,13 +605,17 @@ body.dark-mode .btn-dark-toggle:hover {
 /* Landscape orientation adjustments for phones */
 @media (max-height: 500px) and (orientation: landscape) {
     .ecard-bg-pattern {
-        padding: 5px;
+        padding: 8px;
     }
     
     .ecard-main-card {
+        width: 85%;
+        max-width: 500px;
+        aspect-ratio: 2.2/1;
         padding: 0.75rem;
-        max-height: 95vh;
+        max-height: 90vh;
         overflow-y: auto;
+        margin: 0 auto;
     }
     
     .ecard-logo {
