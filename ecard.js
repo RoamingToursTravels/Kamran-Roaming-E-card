@@ -6,10 +6,20 @@
  */
 
 // ===== CONFIGURATION CONSTANTS =====
+/**
+ * CENTRALIZED EMPLOYEE CONFIGURATION
+ * 
+ * To update employee information:
+ * 1. Modify the values in this ECARD_CONFIG object
+ * 2. All changes will automatically update throughout the entire application
+ * 3. This includes the HTML display, vCard file generation, and social links
+ * 
+ * No need to edit HTML files or search for hardcoded values!
+ */
 const ECARD_CONFIG = {
     // Personal Information
     PERSONAL: {
-        name: 'M S Kamran Roaming',
+        name: 'M S Kamran',
         organization: 'Roaming BD',
         title: 'Software Engineer',
         officePhone: '01332-547048',
@@ -297,6 +307,97 @@ function initSocialButtonEffects() {
     });
 }
 
+// ===== DYNAMIC CONTENT POPULATION =====
+/**
+ * Populates HTML elements with data from ECARD_CONFIG
+ * This ensures all employee information is centralized in one place
+ */
+function populateEmployeeInfo() {
+    const { PERSONAL, SOCIAL, ASSETS } = ECARD_CONFIG;
+    
+    try {
+        // Update profile image
+        const profileImg = document.querySelector('.ecard-photo-img');
+        if (profileImg) {
+            profileImg.src = ASSETS.profileImage;
+            profileImg.alt = PERSONAL.name;
+        }
+        
+        // Update company logo
+        const companyLogo = document.querySelector('.ecard-logo');
+        if (companyLogo) {
+            companyLogo.src = ASSETS.companyLogo;
+        }
+        
+        // Update name and title
+        const nameElement = document.querySelector('.ecard-name');
+        if (nameElement) {
+            nameElement.textContent = PERSONAL.name;
+        }
+        
+        const roleElement = document.querySelector('.ecard-role');
+        if (roleElement) {
+            roleElement.textContent = PERSONAL.title;
+        }
+        
+        // Update contact information
+        const contactElements = document.querySelectorAll('.ecard-contact');
+        if (contactElements.length >= 3) {
+            // Office phone
+            const officePhone = contactElements[1];
+            if (officePhone) {
+                officePhone.innerHTML = `<i class="fas fa-phone-alt me-2"></i>Office: ${PERSONAL.officePhone}`;
+            }
+            
+            // Personal phone
+            const personalPhone = contactElements[2];
+            if (personalPhone) {
+                personalPhone.innerHTML = `<i class="fas fa-mobile-alt me-2"></i>Personal: ${PERSONAL.personalPhone}`;
+            }
+            
+            // Email
+            const emailElement = contactElements[3];
+            if (emailElement) {
+                emailElement.innerHTML = `<i class="fas fa-envelope me-2"></i>${PERSONAL.email}`;
+            }
+        }
+        
+        // Update social media links
+        const socialLinks = document.querySelectorAll('.ecard-social-btn');
+        if (socialLinks.length >= 4) {
+            socialLinks[0].href = SOCIAL.linkedin; // LinkedIn
+            socialLinks[1].href = SOCIAL.facebook; // Facebook
+            socialLinks[2].href = SOCIAL.github;   // GitHub
+            socialLinks[3].href = SOCIAL.portfolio; // Portfolio
+        }
+        
+        // Update address
+        const addressLink = document.querySelector('.ecard-address-link');
+        if (addressLink) {
+            const fullAddress = `${PERSONAL.address.street}, ${PERSONAL.address.city}, ${PERSONAL.address.country}`;
+            addressLink.textContent = fullAddress;
+        }
+        
+        // Update website
+        const websiteLink = document.querySelector('.ecard-website a');
+        if (websiteLink) {
+            websiteLink.href = PERSONAL.website;
+            websiteLink.textContent = PERSONAL.website.replace('https://', '').replace('http://', '');
+        }
+        
+        // Update page title and meta description
+        document.title = `E-Card - ${PERSONAL.name}`;
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+            metaDescription.content = `Digital Business Card - ${PERSONAL.name}, ${PERSONAL.title}`;
+        }
+        
+    } catch (error) {
+        console.error('Error populating employee info:', error);
+        showNotification('Error loading employee information.', 'warning');
+    }
+}
+
 // ===== INITIALIZATION =====
 /**
  * Main initialization function
@@ -304,6 +405,9 @@ function initSocialButtonEffects() {
  */
 function initECard() {
     try {
+        // Populate employee information from config
+        populateEmployeeInfo();
+        
         // Initialize core functionality
         initDarkMode();
         initAnimations();
