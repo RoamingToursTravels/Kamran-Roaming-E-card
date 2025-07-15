@@ -460,22 +460,23 @@ body.dark-mode .btn-dark-toggle:hover {
     }
     
     .ecard-profile-section {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-    
-    .ecard-photo-img {
-        width: 100px;
-        height: 100px;
-        border-radius: 15px;
-        margin: 0 auto;
-    }
-    
-    .ecard-name-title {
-        text-align: center;
-        width: 100%;
-    }
+         flex-direction: row;
+         align-items: center;
+         gap: 0.5rem;
+     }
+     
+     .ecard-photo-img {
+         width: 80px;
+         height: 80px;
+         border-radius: 12px;
+         flex-shrink: 0;
+     }
+     
+     .ecard-name-title {
+         text-align: left;
+         flex: 1;
+         min-width: 0;
+     }
     
     .ecard-name {
         font-size: 1.3rem;
@@ -542,10 +543,23 @@ body.dark-mode .btn-dark-toggle:hover {
         max-width: 90px;
     }
     
+    .ecard-profile-section {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.4rem;
+    }
+    
     .ecard-photo-img {
-        width: 90px;
-        height: 90px;
-        border-radius: 12px;
+        width: 70px;
+        height: 70px;
+        border-radius: 10px;
+        flex-shrink: 0;
+    }
+    
+    .ecard-name-title {
+        text-align: left;
+        flex: 1;
+        min-width: 0;
     }
     
     .ecard-name {
