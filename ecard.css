@@ -2,24 +2,6 @@
 /* Author: M S Kamran */
 /* Organization: Roaming BD */
 
-/* ===== BROWSER COMPATIBILITY ===== */
-/* This CSS supports all major browsers including: */
-/* - Chrome 60+ (full support) */
-/* - Firefox 55+ (full support) */
-/* - Safari 13+ (full support) */
-/* - Edge 79+ (full support) */
-/* - Internet Explorer 11 (partial support with fallbacks) */
-/* - Opera 47+ (full support) */
-/* - Mobile browsers (iOS Safari 13+, Chrome Mobile 60+) */
-
-/* Fallbacks provided for: */
-/* - CSS Variables (IE11 fallback colors) */
-/* - backdrop-filter (transparent backgrounds) */
-/* - aspect-ratio (fixed heights) */
-/* - CSS Grid/Flexbox (vendor prefixes) */
-/* - CSS Gradients (vendor prefixes) */
-/* - CSS Transforms (vendor prefixes) */
-
 /* ===== GLOBAL STYLES ===== */
 .navbar, footer {
     display: none !important;
@@ -84,42 +66,22 @@ body.dark-mode .ecard-bg-pattern {
 .btn-dark-toggle {
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    /* Vendor prefixes for backdrop-filter */
-    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     color: #333;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     font-size: 1.2rem;
-    /* Vendor prefixes for transition */
-    -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    /* Vendor prefixes for flexbox */
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
 }
 
 .btn-dark-toggle:hover {
     background: rgba(255, 255, 255, 1);
     color: #333;
-    /* Vendor prefixes for transform */
-    -webkit-transform: translateY(-2px) scale(1.05);
-    -moz-transform: translateY(-2px) scale(1.05);
-    -ms-transform: translateY(-2px) scale(1.05);
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
@@ -138,32 +100,14 @@ body.dark-mode .btn-dark-toggle:hover {
 /* ===== MAIN CARD STYLES ===== */
 .ecard-main-card {
     background: var(--bg-primary);
-    /* Fallback for older browsers */
-    background: rgba(255, 255, 255, 0.15);
     border-radius: 30px;
-    /* Vendor prefixes for backdrop-filter */
-    -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
-    /* Fallback for browsers without backdrop-filter */
-    background: rgba(255, 255, 255, 0.1);
-    background: var(--bg-primary);
     border: 1px solid var(--border-color);
-    border: 1px solid rgba(255, 255, 255, 0.25);
     box-shadow: 0 8px 32px 0 var(--shadow-color);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     color: var(--text-primary);
-    color: #fff;
     overflow: visible;
-    /* Vendor prefixes for transition */
-    -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    -moz-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    -o-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
-    /* Vendor prefixes for transform */
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
     transform: translateZ(0);
     position: relative;
 }
@@ -194,18 +138,8 @@ body.dark-mode .btn-dark-toggle:hover {
 
 .ecard-name-title {
     text-align: left;
-    /* Vendor prefixes for flexbox */
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-    -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
 }
 
@@ -245,14 +179,7 @@ body.dark-mode .btn-dark-toggle:hover {
 }
 
 .ecard-contact {
-    /* Vendor prefixes for flexbox */
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: start;
-    -moz-box-align: start;
-    -ms-flex-align: start;
     align-items: flex-start;
     gap: 0.5rem;
     line-height: 1.5;
@@ -267,34 +194,16 @@ body.dark-mode .btn-dark-toggle:hover {
 
 /* ===== BUTTON STYLES ===== */
 .ecard-save-btn, .ecard-social-btn {
-    /* Vendor prefixes for gradients */
-    background: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    background: -moz-linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    background: -o-linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
     border: 1px solid rgba(255, 255, 255, 0.2);
-    /* Vendor prefixes for backdrop-filter */
-    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     color: white;
-    /* Vendor prefixes for transition */
-    -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .ecard-save-btn:hover, .ecard-social-btn:hover {
-    /* Vendor prefixes for gradients */
-    background: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-    background: -moz-linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-    background: -o-linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-    /* Vendor prefixes for transform */
-    -webkit-transform: translateY(-2px);
-    -moz-transform: translateY(-2px);
-    -ms-transform: translateY(-2px);
     transform: translateY(-2px);
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
 }
@@ -487,14 +396,9 @@ body.dark-mode .btn-dark-toggle:hover {
 /* Large phones (480px to 575px) */
 @media (max-width: 575px) and (min-width: 480px) {
     .ecard-main-card {
-        width: 92%;
-        max-width: 380px;
-        /* Fallback for browsers without aspect-ratio support */
-        height: 240px;
-        aspect-ratio: 1.6/1;
-        padding: 1.2rem;
+        width: 95%;
+        padding: 1.25rem;
         border-radius: 25px;
-        margin: 0 auto;
     }
     
     .ecard-logo {
@@ -545,14 +449,9 @@ body.dark-mode .btn-dark-toggle:hover {
     }
     
     .ecard-main-card {
-        width: 94%;
-        max-width: 340px;
-        /* Fallback for browsers without aspect-ratio support */
-        height: 225px;
-        aspect-ratio: 1.5/1;
+        width: 98%;
         padding: 1rem;
         border-radius: 20px;
-        margin: 0 auto;
         min-height: auto;
     }
     
@@ -567,11 +466,11 @@ body.dark-mode .btn-dark-toggle:hover {
      }
      
      .ecard-photo-img {
-         width: 80px;
-         height: 80px;
-         border-radius: 12px;
-         flex-shrink: 0;
-     }
+        width: 90px;
+        height: 90px;
+        border-radius: 14px;
+        flex-shrink: 0;
+    }
      
      .ecard-name-title {
          text-align: left;
@@ -591,14 +490,13 @@ body.dark-mode .btn-dark-toggle:hover {
     }
     
     .ecard-contact-box {
-        padding: 0.9rem;
+        padding: 1rem;
         border-radius: 15px;
-        margin: 0.8rem 0;
     }
     
     .ecard-contact {
         font-size: 0.85rem;
-        margin-bottom: 0.6rem;
+        margin-bottom: 0.75rem;
         line-height: 1.4;
     }
     
@@ -610,7 +508,6 @@ body.dark-mode .btn-dark-toggle:hover {
         padding: 10px 20px;
         font-size: 0.95rem;
         border-radius: 25px;
-        margin: 0.6rem 0;
     }
     
     .ecard-social-btn {
@@ -633,18 +530,13 @@ body.dark-mode .btn-dark-toggle:hover {
 /* Extra small phones (below 360px) */
 @media (max-width: 359px) {
     .ecard-bg-pattern {
-        padding: 6px;
+        padding: 5px;
     }
     
     .ecard-main-card {
-        width: 96%;
-        max-width: 320px;
-        /* Fallback for browsers without aspect-ratio support */
-        height: 230px;
-        aspect-ratio: 1.4/1;
-        padding: 0.8rem;
+        width: 99%;
+        padding: 0.75rem;
         border-radius: 18px;
-        margin: 0 auto;
     }
     
     .ecard-logo {
@@ -658,9 +550,9 @@ body.dark-mode .btn-dark-toggle:hover {
     }
     
     .ecard-photo-img {
-        width: 70px;
-        height: 70px;
-        border-radius: 10px;
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
         flex-shrink: 0;
     }
     
@@ -702,17 +594,13 @@ body.dark-mode .btn-dark-toggle:hover {
 /* Landscape orientation adjustments for phones */
 @media (max-height: 500px) and (orientation: landscape) {
     .ecard-bg-pattern {
-        padding: 8px;
+        padding: 5px;
     }
     
     .ecard-main-card {
-        width: 85%;
-        max-width: 500px;
-        aspect-ratio: 2.2/1;
         padding: 0.75rem;
-        max-height: 90vh;
+        max-height: 95vh;
         overflow-y: auto;
-        margin: 0 auto;
     }
     
     .ecard-logo {
