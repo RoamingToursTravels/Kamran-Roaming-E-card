@@ -35,7 +35,7 @@ const ECARD_CONFIG = {
     // File Paths
     ASSETS: {
         companyLogo: './Photos/RTTLOGO.png',
-        profileImage: './Photos/Kamran.png',
+        profileImage: './Photos/employee.png',
         lightBackground: './Photos/RoamingBackground.jpg',
         darkBackground: './Photos/DarkMOOD.png',
         favicon: './Photos/Rlogo.png'
@@ -73,15 +73,16 @@ URL:${PERSONAL.website}
 ADR;TYPE=WORK:;;${PERSONAL.address.street};${PERSONAL.address.city};;${PERSONAL.address.country}
 END:VCARD`;
 
-    // Safari and iOS devices have issues with the download attribute on blob URLs.
+    // Safari, iOS, and Android devices have issues with the download attribute on blob URLs.
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const isAndroid = /android/i.test(navigator.userAgent);
 
     try {
         const blob = new Blob([vCard], { type: 'text/vcard;charset=utf-8' });
         const url = window.URL.createObjectURL(blob);
 
-        if (isSafari) {
-            // For Safari/iOS, redirecting is a more reliable way to trigger the import prompt.
+        if (isSafari || isAndroid) {
+            // For Safari/iOS/Android, redirecting is a more reliable way to trigger the import prompt.
             window.location.href = url;
         } else {
             // For other browsers, the download attribute works well.
